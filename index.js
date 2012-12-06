@@ -1,5 +1,5 @@
 var spm = require('spm')
 
 exports.registerCommand = function() {
-  spm.registerCommand('init', 'spm-init', 'initialize')
+  spm.registerCommand('init', 'spm-init', 'initialize a cmd repo')
 }
