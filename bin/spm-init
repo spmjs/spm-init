@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+var commander = require('commander')
+var color = require('spm/lib/terminal/color')
+
+commander.usage('[template]')
+
+commander.on('--help', function() {
+  console.log()
+  console.log('  ' + color.green('Example:'))
+  console.log()
+  console.log('    Config file is located at ' + color.bold('~/.spm/spmrc'))
+  console.log()
+  console.log('    Add a template section:')
+  console.log()
+  console.log('    $ ' + color.magenta('spm config ') + color.cyan('template.arale') + ' ' + color.underline('git://github.com/aralejs/template-arale.git'))
+  console.log('    $ ' + color.magenta('spm init') + ' arale')
+  console.log()
+});
+
+
+commander.parse(process.argv)
