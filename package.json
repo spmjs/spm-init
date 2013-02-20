@@ -1,7 +1,8 @@
 {
   "name": "spm-init",
-  "version": "1.0.0",
+  "version": "0.1.0a1",
   "description": "spm init plugin",
+  "keywords": ["spmplugin"],
   "scripts": {
     "postinstall": "scripts/post-install.js",
     "uninstall": "scripts/uninstall.js"
