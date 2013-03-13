@@ -3,6 +3,12 @@
   "version": "0.1.0a1",
   "description": "spm init plugin",
   "keywords": ["spmplugin"],
+  "dependencies": {
+    "grunt": "~0.4.0",
+    "spm": "2.0.0b3",
+    "colorful": "*",
+    "commander": "1.1.x"
+  },
   "scripts": {
     "postinstall": "scripts/post-install.js",
     "uninstall": "scripts/uninstall.js"
