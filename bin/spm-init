@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
+var path = require('path');
 var commander = require('commander');
 var color = require('colorful').color;
 var spmrc = require('spm').sdk.spmrc;
@@ -15,7 +16,7 @@ var initDir = (spmrc.get('init.template') || '~/.spm/init').replace(/^~/, proces
   available templates
 */
 
-var template = {};
+var templates = {};
 
 // template in ~/.spm/init
 if (!fs.existsSync(initDir)) {
@@ -23,7 +24,7 @@ if (!fs.existsSync(initDir)) {
 }
 var t = fs.readdirSync(initDir);
 for (var i in t) {
-  template[t[i]] = path.join(initDir, t[i]);
+  templates[t[i]] = path.join(initDir, t[i]);
 }
 
 // default template
@@ -37,8 +38,8 @@ commander.on('--help', function() {
   console.log();
   console.log('  Available templates:');
   console.log();
-  for (var i in templates) {
-    console.log('    ' + i);
+  for (var template in templates) {
+    console.log('    ' + template);
   }
   console.log();
   console.log('  Change init directory in ~/.spm/spmrc');
@@ -54,7 +55,7 @@ commander.parse(process.argv);
 */
 
 var cmd = commander.args[0];
-if (!cmd || templates.indexOf(cmd) === -1) {
+if (!cmd || !templates[cmd]) {
   // argu not exist
   if (cmd) {
     console.log();
