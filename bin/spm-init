@@ -5,23 +5,40 @@ var commander = require('commander');
 var color = require('colorful').color;
 var spmrc = require('spm').sdk.spmrc;
 
-// init directory
+/*
+  init directory
+*/
+
 var initDir = (spmrc.get('init.template') || '~/.spm/init').replace(/^~/, process.env.HOME);
 
-// available templates
+/*
+  available templates
+*/
+
+var template = {};
+
+// template in ~/.spm/init
 if (!fs.existsSync(initDir)) {
   fs.mkdirSync(initDir);
 }
-var templates = fs.readdirSync(initDir);
+var t = fs.readdirSync(initDir);
+for (var i in t) {
+  template[t[i]] = path.join(initDir, t[i]);
+}
 
-// commander init
+// default template
+
+/*
+  commander init
+*/
+
 commander.usage('[template]');
 commander.on('--help', function() {
   console.log();
   console.log('  Available templates:');
   console.log();
   for (var i in templates) {
-    console.log('    ' + templates[i]);
+    console.log('    ' + i);
   }
   console.log();
   console.log('  Change init directory in ~/.spm/spmrc');
@@ -32,7 +49,10 @@ commander.on('--help', function() {
 });
 commander.parse(process.argv);
 
-// show help
+/*
+  show help
+*/
+
 var cmd = commander.args[0];
 if (!cmd || templates.indexOf(cmd) === -1) {
   // argu not exist
@@ -45,4 +65,5 @@ if (!cmd || templates.indexOf(cmd) === -1) {
   commander.emit('--help');
   process.exit();
 }
+
 
