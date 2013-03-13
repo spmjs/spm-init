@@ -5,6 +5,7 @@ var path = require('path');
 var commander = require('commander');
 var color = require('colorful').color;
 var spmrc = require('spm').sdk.spmrc;
+var init = require('../lib/init');
 
 /*
   init directory
@@ -71,4 +72,4 @@ if (!cmd || !templates[cmd]) {
   process.exit();
 }
 
-
+init(templates[cmd]);
