@@ -2,9 +2,10 @@
 
 var fs = require('fs');
 var path = require('path');
+var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
-var spmrc = require('spm').sdk.spmrc;
+var spmrc = require('spmrc');
 var init = require('../lib/init');
 
 /*
@@ -39,7 +40,12 @@ for (var i in t) {
   commander init
 */
 
-commander.usage('[template]');
+commander
+  .usage('[template]')
+  .option('-d, --debug', 'Enable debugging mode for tasks that support it.')
+  .option('--stack', 'Print a stack trace when exiting with a warning or fatal error.')
+  .option('-v, --verbose', 'Show more infomation.');
+
 commander.on('--help', function() {
   console.log();
   console.log('  Available templates:');
@@ -72,4 +78,12 @@ if (!cmd || !templates[cmd]) {
   process.exit();
 }
 
-init(templates[cmd]);
+/*
+  run grunt init task
+*/
+var gruntOption = {};
+if (commander.stack) gruntOption.stack = true;
+
+grunt.task.loadTasks(path.join(__dirname, '../node_modules/grunt-init/tasks'));
+grunt.cli.tasks = ['init:' + templates[cmd]];
+grunt.cli(gruntOption);
