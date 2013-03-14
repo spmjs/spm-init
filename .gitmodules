@@ -1,3 +1,6 @@
 [submodule "templates/arale"]
 	path = templates/arale
 	url = git://github.com/aralejs/template-arale.git
+[submodule "templates/alice"]
+	path = templates/alice
+	url = git://github.com/aralejs/template-alice.git
