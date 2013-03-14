@@ -10,6 +10,10 @@
     "colorful": "*",
     "commander": "1.1.x"
   },
+  "peerDependencies": {
+    "grunt": "~0.4.0",
+    "commander": "1.1.x"
+  },
   "scripts": {
     "postinstall": "scripts/post-install.js",
     "uninstall": "scripts/uninstall.js"
