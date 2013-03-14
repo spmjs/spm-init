@@ -6,7 +6,6 @@ var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
 var spmrc = require('spmrc');
-var init = require('../lib/init');
 
 /*
   init directory
