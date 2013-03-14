@@ -1,8 +1,8 @@
 {
   "name": "spm-init",
-  "version": "0.1.0a1",
+  "version": "0.1.0",
   "description": "spm init plugin",
-  "keywords": ["spmplugin"],
+  "keywords": ["spm", "plugin", "template"],
   "dependencies": {
     "grunt": "~0.4.0",
     "grunt-init": "0.2.0",
