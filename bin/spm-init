@@ -42,12 +42,12 @@ for (var i in t) {
 commander
   .usage('[template]')
   .option('-d, --debug', 'Enable debugging mode for tasks that support it.')
-  .option('--stack', 'Print a stack trace when exiting with a warning or fatal error.')
-  .option('-v, --verbose', 'Show more infomation.');
+  .option('-v, --verbose', 'Show more infomation.')
+  .option('--stack', 'Show stack message.');
 
 commander.on('--help', function() {
   console.log();
-  console.log('  Available templates:');
+  console.log(color.cyan('  Available templates:'));
   console.log();
   for (var template in templates) {
     console.log('    ' + template);
@@ -55,8 +55,9 @@ commander.on('--help', function() {
   console.log();
   console.log('  Change init directory in ~/.spm/spmrc');
   console.log();
-  console.log('  [init]');
-  console.log('  template = ~/.spm/init');
+  console.log(color.magenta('    [init]'));
+  console.log('    template = ~/.spm/init');
+  console.log();
 });
 commander.parse(process.argv);
 
