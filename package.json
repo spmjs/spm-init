@@ -1,18 +1,18 @@
 {
   "name": "spm-init",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "spm init plugin",
   "keywords": ["spm", "plugin", "template"],
   "dependencies": {
-    "grunt": "~0.4.0",
-    "grunt-init": "0.2.0",
-    "spmrc": "0.1.0",
-    "colorful": "*",
-    "commander": "1.1.x"
+    "grunt": "~0.4.1",
+    "grunt-init": "~0.2.0",
+    "spmrc": "~0.1.2",
+    "colorful": "~2.0.1",
+    "commander": "~1.1.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0",
-    "commander": "1.1.x"
+    "grunt": "~0.4.1",
+    "commander": "~1.1.1"
   },
   "scripts": {
     "postinstall": "scripts/post-install.js",
