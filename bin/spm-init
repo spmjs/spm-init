@@ -19,13 +19,6 @@ var initDir = (spmrc.get('init.template') || '~/.spm/init').replace(/^~/, proces
 
 var templates = {};
 
-// default template
-var defaultDir = path.join(__dirname, '../templates');
-var d = fs.readdirSync(defaultDir);
-for (var j in d) {
-  templates[d[j]] = path.join(defaultDir, d[j]);
-}
-
 // template in ~/.spm/init
 if (!fs.existsSync(initDir)) {
   fs.mkdirSync(initDir);
