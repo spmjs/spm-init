@@ -40,3 +40,9 @@ git clone git://github.com/aralejs/template-arale.git --branch spm2 ~/.spm/init/
 ### Create a template
 
 spm-init is compatible with grunt-init, get more information at [grunt project scaffolding](http://gruntjs.com/project-scaffolding).
+
+### Available templates
+
+- [Arale](https://github.com/aralejs/template-arale/tree/spm2)
+- [Alice](https://github.com/aralejs/template-alice/tree/spm2)
+- [spm plugin](https://github.com/spmjs/template-spmplugin)
