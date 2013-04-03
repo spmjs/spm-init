@@ -1,5 +1,9 @@
 # History
 
+## 0.3.1
+
+- [bugfix] [#4](https://github.com/spmjs/spm-init/issues/4) 修复 windows 的安装问题
+
 ## 0.3.0
 
 - [improve] 提供英文文档
