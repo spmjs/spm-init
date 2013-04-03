@@ -15,8 +15,8 @@
     "commander": "~1.1.1"
   },
   "scripts": {
-    "postinstall": "scripts/post-install.js",
-    "uninstall": "scripts/uninstall.js"
+    "postinstall": "node scripts/post-install.js",
+    "uninstall": "node scripts/uninstall.js"
   },
   "bin": {
     "spm-init": "bin/spm-init"
