@@ -11,8 +11,9 @@ var spmrc = require('spmrc');
   init directory
 */
 
-var initDir = (spmrc.get('init.template') || '~/.spm/init')
-  .replace(/^~/, process.env.HOME || process.env.USERPROFILE);
+var homeDir = process.env.HOME || process.env.USERPROFILE;
+var defaultDir = path.join(homeDir, '.spm', 'init');
+var initDir = (spmrc.get('init.template') || defaultDir).replace(/^~/, homeDir);
 
 /*
   available templates
@@ -20,10 +21,9 @@ var initDir = (spmrc.get('init.template') || '~/.spm/init')
 
 var templates = {};
 
-// template in ~/.spm/init
-if (!fs.existsSync(initDir)) {
-  fs.mkdirSync(initDir);
-}
+mkdirp(initDir);
+
+// read templates
 var t = fs.readdirSync(initDir);
 for (var i in t) {
   templates[t[i]] = path.join(initDir, t[i]);
@@ -81,3 +81,17 @@ if (commander.stack) gruntOption.stack = true;
 grunt.task.loadTasks(path.join(__dirname, '../node_modules/grunt-init/tasks'));
 grunt.cli.tasks = ['init:' + templates[cmd]];
 grunt.cli(gruntOption);
+
+/*
+  helper mkdirp
+*/
+function mkdirp(directory) {
+  if (fs.existsSync(directory)) return;
+
+  var arr = directory.split(path.sep);
+  for (var i = 2, l = arr.length; i <= l; i++) {
+    var p = arr.slice(0, i).join(path.sep);
+    if (fs.existsSync(p)) continue;
+    fs.mkdirSync(p);
+  }
+}
