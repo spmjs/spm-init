@@ -11,7 +11,8 @@ var spmrc = require('spmrc');
   init directory
 */
 
-var initDir = (spmrc.get('init.template') || '~/.spm/init').replace(/^~/, process.env.HOME);
+var initDir = (spmrc.get('init.template') || '~/.spm/init')
+  .replace(/^~/, process.env.HOME || process.env.USERPROFILE);
 
 /*
   available templates
