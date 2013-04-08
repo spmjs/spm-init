@@ -38,9 +38,7 @@ commander.on('--help', function() {
   console.log(color.cyan('  Available templates:'));
   console.log();
   if (!isEmptyObject(templates)) {
-    for (var template in templates) {
-      console.log('    ' + template + ' ' + templates[template].description);
-    }
+    writeTable(templates);
   } else {
     console.log('    No templates found');
   }
@@ -104,6 +102,22 @@ function isEmptyObject(obj) {
     return false;
   }
   return true;
+}
+
+/*
+  helper print 2 column
+*/
+
+function writeTable(templates) {
+  for (var template in templates) {
+    var row = ['    '];
+    row.push(template);
+    for (var i = 0, l = 15 - template.length; i < l; i++ ) {
+      row.push(' ');
+    }
+    row.push(templates[template].description);
+    console.log(row.join(''));
+  }
 }
 
 /*
