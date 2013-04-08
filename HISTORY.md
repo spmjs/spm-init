@@ -1,5 +1,9 @@
 # History
 
+## 0.3.2
+
+- [bugfix] [#5](https://github.com/spmjs/spm-init/issues/5) 修复 windows 下路径不正确的问题
+
 ## 0.3.1
 
 - [bugfix] [#4](https://github.com/spmjs/spm-init/issues/4) 修复 windows 的安装问题
