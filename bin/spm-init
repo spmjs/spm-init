@@ -19,16 +19,9 @@ var initDir = (spmrc.get('init.template') || defaultDir).replace(/^~/, homeDir);
   available templates
 */
 
-var templates = {};
-
 mkdirp(initDir);
 
-// read templates
-var t = fs.readdirSync(initDir);
-for (var i in t) {
-  templates[t[i]] = path.join(initDir, t[i]);
-}
-
+var templates = availableTemplates(initDir);
 
 /*
   commander init
@@ -44,9 +37,9 @@ commander.on('--help', function() {
   console.log();
   console.log(color.cyan('  Available templates:'));
   console.log();
-  if (t.length) {
+  if (!isEmptyObject(templates)) {
     for (var template in templates) {
-      console.log('    ' + template);
+      console.log('    ' + template + ' ' + templates[template].description);
     }
   } else {
     console.log('    No templates found');
@@ -90,6 +83,7 @@ grunt.cli(gruntOption);
 /*
   helper mkdirp
 */
+
 function mkdirp(directory) {
   if (fs.existsSync(directory)) return;
 
@@ -99,4 +93,40 @@ function mkdirp(directory) {
     if (fs.existsSync(p)) continue;
     fs.mkdirSync(p);
   }
+}
+
+/*
+  helper test is empty object
+*/
+
+function isEmptyObject(obj) {
+  for (var name in obj) {
+    return false;
+  }
+  return true;
+}
+
+/*
+  helper get available templates
+  should have template.js and exports.template
+*/
+
+function availableTemplates(initDir) {
+  var templates = {}, t = fs.readdirSync(initDir);
+  for (var i in t) {
+    var template = t[i];
+    var p = path.join(initDir, template);
+    var templateJs = path.join(p, 'template.js');
+    if (fs.existsSync(templateJs)) {
+      var o = require(templateJs);
+      if (o.template) {
+        var desc = o.description || '';
+        templates[template] = {
+          description: desc,
+          directory: p
+        };
+      }
+    }
+  }
+  return templates;
 }
