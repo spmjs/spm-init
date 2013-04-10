@@ -1,5 +1,9 @@
 # History
 
+## 0.3.4
+
+- [bugfix] [#6](https://github.com/spmjs/spm-init/issues/6) 修复 windows 下路径无法使用盘符的问题
+
 ## 0.3.3
 
 - [feature] [#3](https://github.com/spmjs/spm-init/issues/3) 只显示可用的模板，并显示模板信息
