@@ -1,5 +1,10 @@
 # History
 
+## 0.3.3
+
+- [feature] [#3](https://github.com/spmjs/spm-init/issues/3) 只显示可用的模板，并显示模板信息
+- [feature] 添加 -V 显示版本
+
 ## 0.3.2
 
 - [bugfix] [#5](https://github.com/spmjs/spm-init/issues/5) 修复 windows 下路径不正确的问题
