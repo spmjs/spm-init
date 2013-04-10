@@ -76,7 +76,8 @@ var gruntOption = {};
 if (commander.stack) gruntOption.stack = true;
 
 grunt.task.loadTasks(path.join(__dirname, '../node_modules/grunt-init/tasks'));
-grunt.cli.tasks = ['init:' + templates[cmd].directory];
+// fix windows directory by replace C:\ to C\:\
+grunt.cli.tasks = ['init:' + templates[cmd].directory.replace(/^([a-zA-Z]):\\/, '$1\\:\\')];
 grunt.cli(gruntOption);
 
 /*
