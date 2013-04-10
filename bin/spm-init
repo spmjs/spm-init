@@ -28,6 +28,7 @@ var templates = availableTemplates(initDir);
 */
 
 commander
+  .version(require('../package.json').version)
   .usage('[template]')
   .option('-d, --debug', 'Enable debugging mode for tasks that support it.')
   .option('-v, --verbose', 'Show more infomation.')
