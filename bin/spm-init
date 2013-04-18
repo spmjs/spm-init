@@ -6,15 +6,14 @@ var commander = require('commander');
 var color = require('colorful').color;
 var manage = require('../lib/manage');
 var helper = require('../lib/helper');
-var initDir = helper.initDir;
 
 /*
   available templates
 */
 
-helper.mkdirp(initDir);
+helper.mkInitDir();
 
-var templates = helper.availableTemplates(initDir);
+var templates = helper.availableTemplates();
 
 /*
   commander init
