@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
 var path = require('path');
 var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
 var spmrc = require('spmrc');
 var manage = require('../lib/manage');
+var helper = require('../lib/helper');
 
 /*
   init directory
@@ -20,9 +20,9 @@ var initDir = (spmrc.get('init.template') || defaultDir).replace(/^~/, homeDir);
   available templates
 */
 
-mkdirp(initDir);
+helper.mkdirp(initDir);
 
-var templates = availableTemplates(initDir);
+var templates = helper.availableTemplates(initDir);
 
 /*
   commander init
@@ -43,8 +43,8 @@ commander.on('--help', function() {
   console.log();
   console.log(color.cyan('  Available templates:'));
   console.log();
-  if (!isEmptyObject(templates)) {
-    writeTable(templates);
+  if (!helper.isEmptyObject(templates)) {
+    helper.writeTable(templates);
   } else {
     console.log('    No templates found');
   }
@@ -74,12 +74,16 @@ if (!cmd || !templates[cmd]) {
   process.exit();
 }
 
-// manage template
+/*
+  manage template
+*/
+
 manage(commander) || process.exit();
 
 /*
   run grunt init task
 */
+
 var gruntOption = {};
 if (commander.stack) gruntOption.stack = true;
 
@@ -87,70 +91,3 @@ grunt.task.loadTasks(path.join(__dirname, '../node_modules/grunt-init/tasks'));
 // fix windows directory by replace C:\ to C\:\
 grunt.cli.tasks = ['init:' + templates[cmd].directory.replace(/^([a-zA-Z]):\\/, '$1\\:\\')];
 grunt.cli(gruntOption);
-
-/*
-  helper mkdirp
-*/
-
-function mkdirp(directory) {
-  if (fs.existsSync(directory)) return;
-
-  var arr = directory.split(path.sep);
-  for (var i = 2, l = arr.length; i <= l; i++) {
-    var p = arr.slice(0, i).join(path.sep);
-    if (fs.existsSync(p)) continue;
-    fs.mkdirSync(p);
-  }
-}
-
-/*
-  helper test is empty object
-*/
-
-function isEmptyObject(obj) {
-  for (var name in obj) {
-    return false;
-  }
-  return true;
-}
-
-/*
-  helper print 2 column
-*/
-
-function writeTable(templates) {
-  for (var template in templates) {
-    var row = ['    '];
-    row.push(template);
-    for (var i = 0, l = 15 - template.length; i < l; i++ ) {
-      row.push(' ');
-    }
-    row.push(templates[template].description);
-    console.log(row.join(''));
-  }
-}
-
-/*
-  helper get available templates
-  should have template.js and exports.template
-*/
-
-function availableTemplates(initDir) {
-  var templates = {}, t = fs.readdirSync(initDir);
-  for (var i in t) {
-    var template = t[i];
-    var p = path.join(initDir, template);
-    var templateJs = path.join(p, 'template.js');
-    if (fs.existsSync(templateJs)) {
-      var o = require(templateJs);
-      if (o.template) {
-        var desc = o.description || '';
-        templates[template] = {
-          description: desc,
-          directory: p
-        };
-      }
-    }
-  }
-  return templates;
-}
