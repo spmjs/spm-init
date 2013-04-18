@@ -4,17 +4,9 @@ var path = require('path');
 var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
-var spmrc = require('spmrc');
 var manage = require('../lib/manage');
 var helper = require('../lib/helper');
-
-/*
-  init directory
-*/
-
-var homeDir = process.env.HOME || process.env.USERPROFILE;
-var defaultDir = path.join(homeDir, '.spm', 'init');
-var initDir = (spmrc.get('init.template') || defaultDir).replace(/^~/, homeDir);
+var initDir = helper.initDir;
 
 /*
   available templates
