@@ -5,18 +5,19 @@ publish:
 	@npm publish
 
 test:
-	echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
-	./node_modules/.bin/mocha -R spec
-	make test-coveralls
+	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
+	@./node_modules/.bin/mocha -R spec
+	@make test-coveralls
 
 coverage:
-	./node_modules/.bin/jscoverage lib lib-cov
-	ICOV=1 ./node_modules/.bin/mocha -R html-cov >coverage.html 
-	rm -rf lib-cov
+	@./node_modules/.bin/jscoverage lib lib-cov
+	@ICOV=1 ./node_modules/.bin/mocha -R html-cov > coverage.html 
+	@rm -rf lib-cov
+	@open coverage.html
 
 test-coveralls:
-	./node_modules/.bin/jscoverage lib lib-cov
-	ICOV=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter  | ./node_modules/.bin/coveralls
-	rm -rf lib-cov
+	@./node_modules/.bin/jscoverage lib lib-cov
+	@ICOV=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter  | ./node_modules/.bin/coveralls
+	@rm -rf lib-cov
 
 .PHONY: test
