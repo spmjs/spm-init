@@ -6,6 +6,7 @@ var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
 var spmrc = require('spmrc');
+var manage = require('../lib/manage');
 
 /*
   init directory
@@ -72,6 +73,9 @@ if (!cmd || !templates[cmd]) {
   commander.emit('--help');
   process.exit();
 }
+
+// manage template
+manage(commander) || process.exit();
 
 /*
   run grunt init task
