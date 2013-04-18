@@ -8,7 +8,8 @@
     "grunt-init": "~0.2.0",
     "spmrc": "~0.1.2",
     "colorful": "~2.0.1",
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "win-spawn": "~1.1.1"
   },
   "devDependencies": {
     "mocha-lcov-reporter": "0.0.1",

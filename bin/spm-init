@@ -49,6 +49,13 @@ commander.on('--help', function() {
 commander.parse(process.argv);
 
 /*
+  manage template
+  install update upgrade list
+*/
+
+if (!manage(commander)) return;
+
+/*
   show help
 */
 
@@ -64,12 +71,6 @@ if (!cmd || !templates[cmd]) {
   commander.emit('--help');
   process.exit();
 }
-
-/*
-  manage template
-*/
-
-manage(commander) || process.exit();
 
 /*
   run grunt init task
