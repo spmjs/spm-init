@@ -19,3 +19,5 @@ node_modules/
 .buildpath
 .settings
 .yml
+coverage.html
+lib-cov
