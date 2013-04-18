@@ -1,5 +1,5 @@
 require('should');
-var helper = require('../lib/helper');
+var helper = require('../').helper;
 
 describe('Helper', function() {
 

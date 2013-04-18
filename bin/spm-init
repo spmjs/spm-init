@@ -4,8 +4,8 @@ var path = require('path');
 var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
-var manage = require('../lib/manage');
-var helper = require('../lib/helper');
+var manage = require('../').manage;
+var helper = require('../').helper;
 
 /*
   available templates
