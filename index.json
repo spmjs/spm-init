@@ -1,5 +1,5 @@
 {
-  "arale": "aralejs/template-arale",
-  "alice": "aralejs/template-alice",
-  "spmplugin": "spmjs/template-spmplugin"
+  "arale": ["aralejs/template-arale", "Create Arale module"],
+  "alice": ["aralejs/template-alice", "Create Alice module"],
+  "spmplugin": ["spmjs/template-spmplugin", "Create spm plugin"]
 }
