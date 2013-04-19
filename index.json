@@ -1,5 +1,14 @@
 {
-  "arale": ["aralejs/template-arale", "Create Arale module"],
-  "alice": ["aralejs/template-alice", "Create Alice module"],
-  "spmplugin": ["spmjs/template-spmplugin", "Create spm plugin"]
+  "arale": {
+    "repo": "aralejs/template-arale",
+    "description": "Create Arale module"
+  },
+  "alice": {
+    "repo": "aralejs/template-alice",
+    "description": "Create Alice module"
+  },
+  "spmplugin": {
+    "repo": "spmjs/template-spmplugin",
+    "description": "Create spm plugin"
+  }
 }
