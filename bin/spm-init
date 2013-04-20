@@ -35,7 +35,7 @@ commander.on('--help', function() {
   console.log(color.cyan('  Available templates:'));
   console.log();
   if (!helper.isEmptyObject(templates)) {
-    helper.writeTable(templates);
+    console.log(helper.writeTable(templates));
   } else {
     console.log('    No templates found');
   }
