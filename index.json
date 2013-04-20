@@ -10,5 +10,9 @@
   "spmplugin": {
     "repo": "spmjs/template-spmplugin",
     "description": "Create spm plugin"
+  },
+  "commonjs": {
+    "repo": "gruntjs/grunt-init-commonjs",
+    "description": "Create a commonjs module"
   }
 }
