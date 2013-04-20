@@ -25,10 +25,10 @@ commander
   .option('-d, --debug', 'Enable debugging mode for tasks that support it.')
   .option('-v, --verbose', 'Show more infomation.')
   .option('--stack', 'Show stack message.')
-  .option('--install <template>', 'Install specified template.')
-  .option('--upgrade <template>', 'Update specified template.')
-  .option('--update', 'Get index from web.')
-  .option('--list', 'Show templates from index.');
+  .option('-i, --install <template>', 'Install template.')
+  .option('-u, --upgrade <template>', 'Update available template.')
+  .option('-l, --list', 'Show templates from index.')
+  .option('--update', 'Get index from web.');
 
 commander.on('--help', function() {
   console.log();
