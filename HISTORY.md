@@ -1,5 +1,9 @@
 # History
 
+## 0.4.0
+
+- [feature] [#7](https://github.com/spmjs/spm-init/issues/7) 添加模板管理
+
 ## 0.3.4
 
 - [bugfix] [#6](https://github.com/spmjs/spm-init/issues/6) 修复 windows 下路径无法使用盘符的问题
