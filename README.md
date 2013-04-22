@@ -50,6 +50,10 @@ spm-init is compatible with grunt-init, get more information at [grunt project s
 - update
 
   fetch [index.json](https://raw.github.com/spmjs/spm-init/master/index.json) from server which include global template.
+  
+  ```
+  $ spm-init --update
+  ```
 
 - install
 
@@ -65,6 +69,10 @@ spm-init is compatible with grunt-init, get more information at [grunt project s
 - list
 
   show templates in index.json
+  
+  ```
+  $ spm-init --list
+  ```
 
 - upgrade
 
