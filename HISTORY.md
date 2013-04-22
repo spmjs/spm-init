@@ -1,5 +1,9 @@
 # History
 
+## 0.4.1
+
+- [fixed] 解决 index.json 不存在 install 的问题
+
 ## 0.4.0
 
 - [feature] [#7](https://github.com/spmjs/spm-init/issues/7) 添加模板管理
