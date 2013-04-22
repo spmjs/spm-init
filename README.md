@@ -26,7 +26,7 @@ spm init [template]
 
 ## Template
 
-The default template path is `~/.spm/init`, you can config `~/.spm/spmrc`:
+The default template path is `~/.spm/init`, you can config `~/.spm/spmrc`
 
 ```
 [init]
@@ -35,16 +35,48 @@ template = ~/.spm-init
 
 Install a template:
 
+if git url is `git://github.com/aralejs/template-arale.git`, you can
+
 ```
-git clone git://github.com/aralejs/template-arale.git ~/.spm/init/arale
+spm-init --install aralejs/template-arale
 ```
 
 ### Create a template
 
 spm-init is compatible with grunt-init, get more information at [grunt project scaffolding](http://gruntjs.com/project-scaffolding).
 
+### Manage template
+
+- update
+
+  fetch [index.json](https://raw.github.com/spmjs/spm-init/master/index.json) from server which include global template.
+
+- install
+
+  install template 
+
+  ```
+  $ spm-init --install aralejs/template-arale.git
+
+  // alias defined in index.json
+  $ spm-init --install arale
+  ```
+
+- list
+
+  show templates in index.json
+
+- upgrade
+
+  upgrade templates
+
+  ```
+  $ spm-init --upgrade arale
+  ```
+
 ### Available templates
 
 - [Arale](https://github.com/aralejs/template-arale)
 - [Alice](https://github.com/aralejs/template-alice/tree/spm2)
 - [spm plugin](https://github.com/spmjs/template-spmplugin)
+
