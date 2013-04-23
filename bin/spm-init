@@ -28,7 +28,8 @@ commander
   .option('-i, --install <template>', 'Install template.')
   .option('-u, --upgrade <template>', 'Update available template.')
   .option('-l, --list', 'Show templates from index.')
-  .option('--update', 'Get index from web.');
+  .option('--update', 'Get index from web.')
+  .option('-f, --force', 'Force to process the task.');
 
 commander.on('--help', function() {
   console.log();
