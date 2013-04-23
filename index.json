@@ -14,5 +14,25 @@
   "commonjs": {
     "repo": "gruntjs/grunt-init-commonjs",
     "description": "Create a commonjs module"
+  },
+  "jquery": {
+    "repo": "gruntjs/grunt-init-jquery",
+    "description": "Create a jQuery plugin"
+  },
+  "node": {
+    "repo": "gruntjs/grunt-init-node",
+    "description": "Create a Node.js module"
+  },
+  "gruntplugin": {
+    "repo": "gruntjs/grunt-init-gruntplugin",
+    "description": "Create a gruntplugin module"
+  },
+  "gruntfile": {
+    "repo": "gruntjs/grunt-init-gruntfile",
+    "description": "Create a basic Gruntfile"
+  },
+  "command": {
+    "repo": "popomore/grunt-init-command",
+    "description": "Commonjs template for command "
   }
 }
