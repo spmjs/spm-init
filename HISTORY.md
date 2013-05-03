@@ -1,5 +1,9 @@
 # History
 
+## 0.4.2
+
+- [fixed] 解决 --upgrade 无法工作的问题
+
 ## 0.4.1
 
 - [fixed] 解决 index.json 不存在 install 的问题
