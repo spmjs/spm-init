@@ -1,5 +1,9 @@
 # History
 
+## 0.4.5
+
+- [improved] cli-table 换成 text-table
+
 ## 0.4.4
 
 - [improved] 增加 git 不存在的提示
