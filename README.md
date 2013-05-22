@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/spmjs/spm-init.png?branch=master)](https://travis-ci.org/spmjs/spm-init) [![Coverage Status](https://coveralls.io/repos/spmjs/spm-init/badge.png?branch=master)](https://coveralls.io/r/spmjs/spm-init)
 
+[![David Status](https://david-dm.org/spmjs/spm-init.png)](https://david-dm.org/spmjs/spm-init)
+
 spm-init is a scaffolding tool used to automate project creation.
 
 ---
