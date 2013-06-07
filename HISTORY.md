@@ -1,5 +1,10 @@
 # History
 
+
+## 0.4.6
+
+- [fixed] 修复 windows 下 path 解析的问题
+
 ## 0.4.5
 
 - [improved] cli-table 换成 text-table
