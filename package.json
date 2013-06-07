@@ -7,6 +7,10 @@
     "plugin",
     "template"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spmjs/spm-init.git"
+  },
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-init": "~0.2.0",
