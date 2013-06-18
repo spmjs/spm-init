@@ -1,4 +1,8 @@
 {
+  "cmd": {
+    "repo": "spmjs/template-cdm",
+    "description": "Create a CMD module"
+  },
   "arale": {
     "repo": "aralejs/template-arale",
     "description": "Create Arale module"

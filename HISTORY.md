@@ -1,5 +1,8 @@
 # History
 
+## 0.4.7
+
+- [improved] [#8](https://github.com/spmjs/spm-init/issues/8) 添加默认的 cmd 模板。
 
 ## 0.4.6
 

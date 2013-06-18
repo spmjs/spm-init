@@ -15,7 +15,7 @@ helper.mkInitDir();
 
 var templates = helper.availableTemplates();
 
-/*
+/*/
   commander init
 */
 
@@ -60,8 +60,16 @@ if (!manage(commander)) return;
   show help
 */
 
-var cmd = commander.args[0];
-if (!cmd || !templates[cmd]) {
+var cmd;
+
+if (!commander.args[0]) {
+  cmd = 'cmd';
+  console.log(color.green('  Choosing "' + cmd + '" as defaute template.'));
+} else {
+  cmd = commander.args[0];
+}
+
+if (!templates[cmd]) {
   // argu not exist
   if (cmd) {
     console.log();
