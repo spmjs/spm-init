@@ -1,6 +1,6 @@
 {
   "cmd": {
-    "repo": "spmjs/template-cdm",
+    "repo": "spmjs/template-cmd",
     "description": "Create a CMD module"
   },
   "arale": {
@@ -10,6 +10,10 @@
   "alice": {
     "repo": "aralejs/template-alice",
     "description": "Create Alice module"
+  },
+  "site": {
+    "repo": "aralejs/site",
+    "description": "Create a Arale based site"
   },
   "spmplugin": {
     "repo": "spmjs/template-spmplugin",
