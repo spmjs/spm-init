@@ -64,7 +64,7 @@ var cmd;
 
 if (!commander.args[0]) {
   cmd = 'cmd';
-  console.log(color.green('  Choosing "' + cmd + '" as defaute template.'));
+  console.log(color.green('  Choosing "' + cmd + '" as default template.'));
 } else {
   cmd = commander.args[0];
 }
