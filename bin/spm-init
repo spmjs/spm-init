@@ -4,42 +4,27 @@ var path = require('path');
 var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
-var manage = require('../').manage;
-var helper = require('../').helper;
+var helper = require('../lib/helper');
+var exists = require('fs').existsSync;
 
 /*
-  available templates
+  template directory
 */
 
-helper.mkInitDir();
+var template = path.join(helper.initDir, 'cmd');
 
-var templates = helper.availableTemplates();
-
-/*/
+/*
   commander init
 */
 
 commander
   .version(require('../package.json').version)
   .usage('[template]')
-  .option('-d, --debug', 'Enable debugging mode for tasks that support it.')
   .option('-v, --verbose', 'Show more infomation.')
-  .option('--stack', 'Show stack message.')
-  .option('-i, --install <template>', 'Install template.')
-  .option('-u, --upgrade <template>', 'Update available template.')
-  .option('-l, --list', 'Show templates from index.')
-  .option('--update', 'Get index from web.')
+  .option('-u, --upgrade', 'Update available template.')
   .option('-f, --force', 'Force to process the task.');
 
 commander.on('--help', function() {
-  console.log();
-  console.log(color.cyan('  Available templates:'));
-  console.log();
-  if (!helper.isEmptyObject(templates)) {
-    console.log(helper.writeTable(templates));
-  } else {
-    console.log('    No templates found');
-  }
   console.log();
   console.log('  Change init directory in ~/.spm/spmrc');
   console.log();
@@ -49,46 +34,31 @@ commander.on('--help', function() {
 });
 commander.parse(process.argv);
 
-/*
-  manage template
-  install update upgrade list
-*/
-
-if (!manage(commander)) return;
-
-/*
-  show help
-*/
-
-var cmd;
-
-if (!commander.args[0]) {
-  cmd = 'cmd';
-  console.log(color.green('  Choosing "' + cmd + '" as default template.'));
-} else {
-  cmd = commander.args[0];
+if (commander.upgrade) {
+  helper.gitInstall('git://github.com/spmjs/template-cmd.git', template);
+  return;
 }
 
-if (!templates[cmd]) {
-  // argu not exist
-  if (cmd) {
-    console.log();
-    console.log(color.red('  Template "' + cmd + '" not exist.'));
-  }
-  // no argu
-  process.stdout.write(commander.helpInformation());
-  commander.emit('--help');
-  process.exit();
+/*
+  fetch template if not exist
+*/
+
+if (!exists(template)) {
+  helper.mkInitDir();
+  helper.gitInstall('git://github.com/spmjs/template-cmd.git', template)
+    .on('close', runTask);
+} else {
+  runTask();
 }
 
 /*
   run grunt init task
 */
 
-var gruntOption = {};
-if (commander.stack) gruntOption.stack = true;
-
-grunt.task.loadTasks(path.join(__dirname, '../node_modules/grunt-init/tasks'));
-// fix windows directory by replace C:\ to C\:\
-grunt.cli.tasks = ['init:' + templates[cmd].directory.replace(/^([a-zA-Z]):\\/, '$1\\:\\')];
-grunt.cli(gruntOption);
+function runTask() {
+  grunt.task.loadTasks(path.join(__dirname, '../node_modules/grunt-init/tasks'));
+  // fix windows directory by replace C:\ to C\:\
+  var taskName = 'init:' + template.replace(/^([a-zA-Z]):\\/, '$1\\:\\');
+  grunt.cli.tasks = [taskName];
+  grunt.cli({});
+}

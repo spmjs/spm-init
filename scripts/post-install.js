@@ -3,6 +3,7 @@
 var spmrc = require('spmrc');
 var spawn = require('win-spawn');
 var fs = require('fs');
+var gitInstall = require('../lib/helper').gitInstall;
 
 try {
   var spm = require('spm');
@@ -22,12 +23,3 @@ try {
 
 // install spm-init templates
 gitInstall('git://github.com/spmjs/template-cmd.git', '~/.spm/init/cmd');
-
-function gitInstall(url, dest) {
-  dest = dest.replace('~', spmrc.get('user.home'));
-  if (!fs.existsSync(dest)) {
-    spawn('git', ['clone', url, dest], {stdio: 'inherit'});
-  } else {
-    spawn('git', ['pull', 'origin', 'master'], {stdio: 'inherit', 'cwd': dest});
-  }
-}

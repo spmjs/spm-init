@@ -28,7 +28,6 @@
     "should": "1.1.0"
   },
   "scripts": {
-    "test": "make test",
     "postinstall": "node scripts/post-install.js",
     "uninstall": "node scripts/uninstall.js"
   },
