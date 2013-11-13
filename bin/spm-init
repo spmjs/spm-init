@@ -44,7 +44,6 @@ if (commander.upgrade) {
 */
 
 if (!exists(template)) {
-  helper.mkInitDir();
   helper.gitInstall('git://github.com/spmjs/template-cmd.git', template)
     .on('close', runTask);
 } else {
