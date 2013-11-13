@@ -1,5 +1,11 @@
 # History
 
+---
+
+## 0.5.0
+
+- [changed] [#11](https://github.com/spmjs/spm-init/issues/11) 简化 init 的功能，去掉了自定义模板，加入[默认模板](https://github.com/spmjs/nico-cmd)。
+
 ## 0.4.7
 
 - [improved] [#8](https://github.com/spmjs/spm-init/issues/8) 添加默认的 cmd 模板。
