@@ -36,3 +36,5 @@ template = ~/.spm-init
 ```
 $ git clone https://github.com/spmjs/template-cmd ~/.spm/init/cmd
 ```
+
+> 安装 spm-init 时会默认安装上模板 [template-cmd](https://github.com/spmjs/template-cmd) 。
