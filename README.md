@@ -38,3 +38,5 @@ Install a template:
 ```
 $ git clone https://github.com/spmjs/template-cmd ~/.spm/init/cmd
 ```
+
+> Install spm-init will also install default theme: https://github.com/spmjs/template-cmd
